@@ -4,7 +4,8 @@
 
 <p align="center">
   <b>Réservez l'outillage de votre entreprise en quelques secondes, sans fichiers éparpillés ni double réservation.</b>
-</p>
+</p> 
+
 
 <p align="center">
   <img alt="Node.js" src="https://img.shields.io/badge/Node.js-22-339933?logo=node.js&logoColor=white">
