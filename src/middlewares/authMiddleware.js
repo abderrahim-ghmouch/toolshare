@@ -10,7 +10,7 @@ export const authMiddleware = async function (req, res, next) {
         const header = req.headers.authorization
         if (!header ?.startsWith('Bearer ')) throw new appError('Authentication required.', 401)
 
-        const decoded = jwt.verify(header.split(' ')[1], process.env.JWT_SECTRET)
+        const decoded = jwt.verify(header.split(' ')[1], process.env.JWT_SECRET)
 
         req.user = {
             id: decoded.userId,

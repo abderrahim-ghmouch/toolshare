@@ -14,7 +14,7 @@ import {
 } from '../middlewares/authMiddleware.js'
 import {
     authorize
-} from '../middlewares/roleMiddleware.js'
+} from '../middlewares/roleMiddelware.js'
 
 const router = Router()
 

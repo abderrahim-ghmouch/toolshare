@@ -15,7 +15,7 @@ export const createManager = async function (req, res, next) {
 
 export const changeAssignment = async function (req, res, next) {
     try {
-        const manager = await managerService.changeAssignment(req.params.id, req.body ? .storeId)
+        const manager = await managerService.changeAssignment(req.params.id, req.body?.storeId)
         return res.status(200).json({
             status: 'success',
             data: manager

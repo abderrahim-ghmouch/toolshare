@@ -30,7 +30,7 @@ const getManagerStoreId = async (actor) => {
 
     const manager = await userRepository.findUserById(actor.id)
 
-    if (!manager ? .store) {
+    if (!manager?.store) {
 
         throw new appError('No store assigned to this manager.', 403)
     }
@@ -90,9 +90,9 @@ export const getStore = async function (actor, id) {
 
 
 export const createStore = async function (data) {
-    const name = data ? .name ? .trim()
-    const location = data ? .location ? .trim()
-    const description = data ? .description ? .trim()
+    const name = data?.name?.trim()
+    const location = data?.location?.trim()
+    const description = data?.description?.trim()
 
     if (!name || !location) {
         throw new appError('Name and location are required.', 400)
@@ -119,7 +119,7 @@ export const updateStore = async function (id, data) {
 
     const updates = {}
     for (const field of ['name', 'location', 'description']) {
-        if (data ? . [field] !== undefined) updates[field] = String(data[field]).trim()
+        if (data?.[field] !== undefined) updates[field] = String(data[field]).trim()
     }
     if (Object.keys(updates).length === 0) {
         throw new appError('No valid fields to update.', 400)

@@ -37,8 +37,8 @@ const getAssignableStore = async (storeId) => {
 
 export const createManager = async function (data) {
 
-    const name = typeof data ? .name === 'string' ? data.name.trim() : ''
-    const email = typeof data ? .email === 'string' ? data.email.trim() : ''
+    const name = typeof data?.name === 'string' ? data.name.trim() : ''
+    const email = typeof data?.email === 'string' ? data.email.trim() : ''
     const password = data ?.password
 
     if (!name || !email || !password) {

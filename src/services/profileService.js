@@ -71,8 +71,8 @@ export const updateProfile = async function (actor, data) {
 
 export const changePassword = async function (actor, data) {
 
-    const oldPassword = data ? .oldPassword
-    const newPassword = data ? .newPassword
+    const oldPassword = data?.oldPassword
+    const newPassword = data?.newPassword
 
     if (typeof oldPassword !== 'string' || !oldPassword) {
         throw new appError('oldPassword is required.', 400)

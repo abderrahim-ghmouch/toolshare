@@ -160,7 +160,7 @@ export const login = async function login(email, password) {
     }
 )
 
-    const { password: _password, safeUser } = user.toObject()
+    const { password: _password, ...safeUser } = user.toObject()
     
 return {token,user: safeUser}
 

@@ -10,8 +10,6 @@ import userRoutes from './src/routes/userRoutes.js'
 
 import { errorHandler } from './src/middlewares/errorHandler.js'
 
-import authRoutes from './src/routes/authRoutes'
-
 import managerRoutes from './src/routes/managerRoutes.js'
 
 import profileRoutes from './src/routes/profileRoutes.js'
@@ -31,8 +29,8 @@ app.use(authRoutes)
 
 app.use(storeRoutes)
 
+app.use(profileRoutes)
 
-app.use(approfileRoutes)
 app.use(errorHandler)
 
 
