@@ -48,6 +48,10 @@ export async function userStats(id, active) {
         { new: true, runValidators: true }
     )
 }
+export async function findUserByIdWithPassword(id) {
+
+    return userModel.findById(id).select('+password')
+}
 
 export default {
     listUsers,
@@ -56,5 +60,6 @@ export default {
     createUser,
     deleteUser,
     updateUser,
-    userStats
+    userStats,
+    findUserByIdWithPassword
 }

@@ -14,6 +14,9 @@ import authRoutes from './src/routes/authRoutes'
 
 import managerRoutes from './src/routes/managerRoutes.js'
 
+import profileRoutes from './src/routes/profileRoutes.js'
+
+
 const app = express()
 
 app.use(express.json())
@@ -28,6 +31,10 @@ app.use(authRoutes)
 
 app.use(storeRoutes)
 
+
+app.use(approfileRoutes)
+
 app.use(errorHandler)
+
 
 export default app
