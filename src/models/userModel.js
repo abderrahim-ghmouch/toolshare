@@ -40,7 +40,15 @@ const userSchema = new mongoose.Schema({
         
         enum: ['admin', 'user','manager'],
         default :'user'
-    },
+    }
+    ,
+    
+    store: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'store',
+        default: null
+    }
+    ,
 
     active: {
         type: Boolean,

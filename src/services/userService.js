@@ -40,22 +40,37 @@ export async function getUser(id) {
     return user
 }
 
-
 export const createUser = async function (userData) {
     const user = ensureUserData(userData)
     if (!user.name || !user.email || !user.password) {
 
         throw new appError('Name, email, and password are required.', 400)
     }
+
+    // managers must be assigned to a store: they are created through POST /api/managers
+    if (user.role === 'manager') {
+        throw new appError('Manager accounts must be created with POST /api/managers.', 400)
+    }
+    if (user.role !== undefined && !['admin', 'user'].includes(user.role)) {
+        throw new appError('Invalid role.', 400)
+    }
+    delete user.store
+
     const existingUser = await userRepository.findUserByEmail(user.email)
     if (existingUser) throw new appError('A user with this email already exists.', 409)
 
     user.password = await bcrypt.hash(user.password, 10)
 
-    return userRepository.createUser(user)
+    const created = await userRepository.createUser(user)
+
+    // never send the password hash back to the client
+    const {
+        password: _password,
+        ...safeUser
+    } = created.toObject()
+    return safeUser
 
 }
-
 
 export async function updateUser(id, userData) {
     const user = ensureUserData(userData)

@@ -12,11 +12,15 @@ import { errorHandler } from './src/middlewares/errorHandler.js'
 
 import authRoutes from './src/routes/authRoutes'
 
+import managerRoutes from './src/routes/managerRoutes.js'
+
 const app = express()
 
 app.use(express.json())
 
 app.use(installationRoutes)
+
+app.use(managerRoutes)
 
 app.use(userRoutes)
 
