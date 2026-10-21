@@ -5,17 +5,17 @@ import 'dotenv/config'
 
 import mongoose from 'mongoose'
 
-const port = process.env.PORT || 3000
+const Port = process.env.PORT || 3000
 
 
 try {
     
-    app.connect(proccss.env.MONGO_URI, () => {
+    mongoose.connect(proccss.env.MONGO_URI, () => {
         console.log('DATABASE is connected')
     })
     
     
-    app.listen(PORT,()=>{console.log('server is running')})
+    app.listen(Port,()=>{console.log('server is running')})
 
 } catch (error) {
     
