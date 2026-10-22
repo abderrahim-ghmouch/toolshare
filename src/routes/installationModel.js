@@ -7,7 +7,8 @@ const installationSchema = new mongoose.Schema({
             
             type: Boolean,
             
-            default: false
+        default: false
+            
         }
 
 }
