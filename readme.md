@@ -1,6 +1,6 @@
-<p align="center">
+<pTOO align="center">
   <img src="assets/logo.png" alt="ToolShare" width="480">
-</p>
+</pTOO
 
 <p align="center">
   <b>Réservez l'outillage de votre entreprise en quelques secondes, sans fichiers éparpillés ni double réservation.</b>
