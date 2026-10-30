@@ -37,10 +37,13 @@ const userSchema = new mongoose.Schema({
         
         type: String,
         
-        required: true,
-        
         enum: ['admin', 'user','manager'],
         default :'user'
+    },
+
+    active: {
+        type: Boolean,
+        default:true
     }
 })
 
