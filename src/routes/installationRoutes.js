@@ -1,11 +1,10 @@
 'use strict'
 
-import Router from 'express'
+import { Router } from 'express'
+import { install, status } from '../controllers/installationController.js'
 
-import installationController from '../services/installationController.js'
+const router = Router()
+router.get('/api/installation/status', status)
+router.post('/api/installation/install', install)
 
-
-Router.get('/api/installation/status', installationController.Staus())
-
-
-Router.post('/api/installation/install',installationController.install())
+export default router

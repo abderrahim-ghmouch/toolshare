@@ -1,35 +1,24 @@
-import bcrypt from "bcrypt"
+import bcrypt from 'bcrypt'
+import { getStatus as findInstallation, installAdmin } from '../repositories/installationRepository.js'
 
-import installationRepository from "../repositories/installationRepository.js"
-
-export class InvalidInstallationDataError extends Error {}
-export class InstallationAlreadyCompletedError extends Error {}
+export const getStatus = () => findInstallation()
 
 
-export async function getStatus() {
+export const install = async () => {
+  
+  const currentInstallation = await getStatus()
+  if (currentInstallation) return currentInstallation
 
-    return installationRepository.getStatus()
-}
 
-export async function installStatus(name, email, password) {
+  const { ADMIN: name, ADMIN_EMAIL: email, PASSWORD: password } = process.env
+
+
+  if (!name || !email || !password) {
     
+    const error = Object.assign(new Error('ADMIN, ADMIN_EMAIL, and PASSWORD are required'), { statusCode: 400 })
+    throw error
+  }
 
-
-
-    const currentInstallation = await getStatus()
-    
-    if (currentInstallation)
-    {
-        
-        console.log('already ')  
-    }
-    
-        const hashPssword=bcrypt.hashPssword(password,10)
-
-        const admin = await installAdmin({name,email,hashPssword})
-    
-    return admin 
-    
-
-
+  const hashedPassword = await bcrypt.hash(password, 10)
+  return installAdmin({ name, email, password: hashedPassword, role: 'admin' })
 }
