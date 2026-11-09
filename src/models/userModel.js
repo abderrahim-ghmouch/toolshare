@@ -41,6 +41,13 @@ const userSchema = new mongoose.Schema({
         
         enum: ['admin', 'user','manager'],
         default :'user'
+    },
+    assignedSites: {
+        type: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'site'
+        }],
+        default: []
     }
 })
 

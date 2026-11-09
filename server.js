@@ -1,26 +1,21 @@
-import app from 'app.js'
-
-
+import app from './app.js'
 import 'dotenv/config'
-
 import mongoose from 'mongoose'
 
-const Port = process.env.PORT || 3000
-
+const port = process.env.PORT || 3000
 
 try {
-    
-    mongoose.connect(proccss.env.MONGO_URI, () => {
-        console.log('DATABASE is connected')
+    if (!process.env.MONGO_URI) {
+        throw new Error('MONGO_URI is required')
+    }
+
+    await mongoose.connect(process.env.MONGO_URI)
+    console.log('Database is connected')
+
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`)
     })
-    
-    
-    app.listen(Port,()=>{console.log('server is running')})
-
 } catch (error) {
-    
-    throw new error('failed to start server ', error.message)
-    
-    process.exit(1)
+    console.error('Failed to start server:', error)
+    process.exitCode = 1
 }
-
